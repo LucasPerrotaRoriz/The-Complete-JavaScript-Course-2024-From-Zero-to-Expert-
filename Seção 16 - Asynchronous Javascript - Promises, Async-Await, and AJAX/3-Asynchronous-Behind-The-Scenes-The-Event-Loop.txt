@@ -1,0 +1,54 @@
+Slide 214
+
+The essentials parts of the Runtime for this explanation is the call stack, Web APIS, callback queue and the 
+Event Loop.
+
+A JS Engine is built on the idea of a single thread. So how can asynchronous code execute in a non-blocking way?
+
+##### How Asynchronous Javascript works #####
+In the code the img is selected and then it's loaded a img by setting src to 'dog.jpg'. The image will 
+be loaded asynchronously in the background.
+
+Everything related to the DOM is part of the Web APIS not JS. It's in the Web APIS environment of the browser 
+where the async tasks related to the DOM will run. The same can also be said for timers, AJAX calls, basically 
+all async tasks.
+
+The load event is listened to and passes a callback function. The callback function will be registered in the Web APIS
+environment where the image is loading. The callback will stay there until the load event is emitted.
+
+An AJAX call is made to the API, since fetch in a async task it will go to the Web APIS environment. then() is used to get 
+the promise returned by fetch. The callback function will be registered in the Web APIS environment waiting the future
+value of the promise.
+
+When all top level is executed, the callbacks can be executed. When the image loads it will generate the load event. The 
+callback for the load event is put in the callback queue. The callback queue is a ordered list of all the callback functions 
+that are to be executed. 
+
+There can be some implications with callback queue. So for example imagine you have a timer to be run after 5s, when the 5s passes
+the callback function will be put in the callback queue. However what if there are other callback functions present and the timers 
+callback can't be executed right away? This means that the 5s in the timers callback is not guaranteed, the only things for certain 
+is that it won't execute before 5s seconds.
+
+The callback queue can also contain callbacks from DOM events. Put it does not means that the callbacks will be asynchronous.
+
+The event loop looks in the callstack and checks if it's empty or not, except the global context. If the stack is empty, it 
+will get the first callback from the callback queue and puts in the callstack to be executed. This is called a event loop tick.
+
+The event loops does the coordination between the callstack and the callbacks in the callback queue.
+
+The JS language has not sense of time because everything that in async does not happen in the engine. It's the Runtime that manages 
+all the async behavior and the event loop that decides what will be executed next.
+
+The Web API environment, the callback queue and the event loop together make possible asynchronous code be executed in a 
+non-blocking way.
+
+With promises the interaction is different. When the data arrives the fetch will the done. Callbacks that are related to 
+promises are not put in the callback queue. They are put in a special callback queue called microtasks queue. The microtasks
+queue has priority over the callback queue. It works similarly to the callbacks queue, but they are all executed first.
+A callback is called a microtask in this queue.
+
+If one microtask adds another microtask, it will be executed before any callbacks in the callback queue. The microtask queue
+can starve the callback queue, making it possible that callbacks are never executed. This is not usually a problem but it 
+can happen.
+
+

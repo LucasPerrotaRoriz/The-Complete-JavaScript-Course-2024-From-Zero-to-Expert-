@@ -1,0 +1,64 @@
+##### Synchronous code #####
+Slide 198
+Most of the code it's executed in a synchronous way, line by line in order of execution.
+When a line it's reached it get's executed by the execution thread. The execution thread is
+part of the execution context that executes the code in the CPU.
+
+Each line of code waits for the previous one to finish execution. This can generate problems
+when a line takes too long to execute. An alert is a good example of a line of code that
+can block the execution.
+
+##### Asynchronous code #####
+Slide 199
+- Asynchronous code is executed after a task that runs in the "background" finishes
+executing.
+
+- Asynchronous code is non-blocking meaning it does't block code execution
+
+- Execution does not wait for an asynchronous task to finish its work
+
+The first line of code is still synchronous and moves to the next in a synchronous way. When setTimeout
+is reached, a timer will start and run in the background without blocking the main codes execution. 
+The callback function will be registered all will execute after the 5s. In this case the callback function 
+is asynchronous. The code then moves to the next line, since async is non-blocking and execution does not 
+wait for async tasks to finish.
+
+This does not mean that callback functions make code asynchronous, so for example the Array method map 
+accepts a callback function and that is not asynchronous.
+
+Slide 200
+Setting the src attribute of a image is asynchronous since it loads an image while the rest of the code 
+can keep running. When a image is loaded, an load event is created automatically. The load event is 
+asynchronous and non-blocking.
+
+Event listeners alone just like callback functions do not make a code asynchronous. For example
+a click event is not async code, it's just waiting for an event. The code example is asynchronously 
+because the image is being loaded in the background, not the fact that is being listened to.
+
+##### AJAX #####
+Slide 201
+AJAX allows devs to communicate with remote web serves in a async way. AJAX calls are made to 
+request some data from a web server dynamically
+
+##### How AJAX works #####
+
+As an example imagine a JS application running in the browser which can also be called
+client. The application will get data from a web server about countries. With AJAX you can
+make a HTTP request to the server that has this data, the server will send a response with the data.
+The back and forth between the client and the server happens asynchronously in the background.
+
+There are different types of request like GET to receive data or POST  to send data to a server.
+
+The web server usually has an API, which is the one that holds the data.
+
+##### APIS #####
+
+An API is a self contained piece of software that can be use by another software to allow
+applications to talk to each other and share information. 
+
+Classes can be considered APIs since they are self contained and can be used by other applications.
+
+Online APIS are applications running on a web server that receives request for data and sends back data 
+as response. They can be called web apis or just APIS.
+
+APIS these days use JSON instead of XML.

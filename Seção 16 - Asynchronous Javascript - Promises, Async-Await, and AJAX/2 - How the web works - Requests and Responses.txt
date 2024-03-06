@@ -1,0 +1,79 @@
+
+-- How the requests happens 
+
+When you try to access a web server the browser which you can also call a clients makes a request which the web server send back
+a response. The response will have the data asked.
+
+This process wil happen if you try accessing a Web API as well as a website
+
+This process is called the Request-response model or Client-server architecture.
+
+The url https://restcountries.com/v3.1/name/ is compose of: Protocol in this case HTTP, the domain restcountries and the resource 
+v3.q/name.
+
+This is not the real name of the website, just something that's better to remember. The conversion to the real name is made by 
+the DNS.
+
+The first thing that happens whe you try accessing a web server is that the browser will make a request to the DNS which will match the address
+to the web server real IP address.
+
+What the DNS returns will have the HTTPS, the IP address and the Port number. The port has nothing do to with the resource and data will 
+be sent to the HTTP request.
+
+A TCP socket will establish a connection between the browser and server. This connection will exist while the data is being transfered.
+
+
+-- TCP and IP 
+
+TCP is the Transmission Control Protocol and IP Internet Protocol they are communications protocols that dictate how communications
+happens on the web. They are like control systems that sets rules on the net.
+
+-- HTTP
+
+Hypertext Transfer Protocol is a communication protocol. A communication protocol are rules that allow to parties to communicate.
+HTTP allows clients and Web servers to communicate.
+
+A HTTP request will have:
+
+A start line which is really important. It has a HTTP method + request target + HTTP version.
+Example: GET /rest/v2/alpha/PT HTTP/1.1
+
+Some HTTP methods are:
+
+GET - for requesting data
+POST - for sending data
+PUT, PATCH - to modify data
+
+The request target is what you want to access. If it were empty you would access the website root.
+
+Then there is the request headers that has info about the request.
+Example: Host www.google.com
+         User-agent: Mozilla/5.0
+         Accept-Language: en-US
+
+The request body will contain the request data.
+Example: <BODY>
+
+In this case HTTP was used but there is also HTTPS which has TSL or SSL encryptions. The logic wll still be the same.
+
+The request hits the server which will them work to return the data. It will send a HTTP response looks similar to the request.
+It contains a start line, headers and body.
+
+The start line contains HTTP version + status code + status message. This will inform whether the request was successful or not, 
+with a 200 OK and 404 for an error.
+
+Then there is the response headers and the <BODY> which contains the JSON data from the API or the HTML requested.
+
+In the case of web servers in this case only one request and response is made. In the case of a webpage many will occur because 
+things like the html, css, js will generate a request and response back. This will happen for every file and requests can be made at the 
+same time with some limitations to avoid slowing down.
+
+-- How request response is send through the web
+
+TCP breaks the request in small chunks called packtes before being sent. Once it arrives at the destination TCP assembles 
+them to the original request or response. This is done like this so packets can make different routes, allowing it to be faster.
+
+The IP will send an route the packets through the net, ensuring they arrive by having IP address on each packet.
+
+
+
