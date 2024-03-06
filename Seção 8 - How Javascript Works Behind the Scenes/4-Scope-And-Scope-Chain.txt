@@ -1,0 +1,68 @@
+##### Scope Concepts ##### 
+Slide 99
+Scoping controls how the programs variables are organized and accessed by the JS engine.
+
+Lexical scoping means that the way variables are organized and accessed is controlled by the placement 
+of functions and of blocks in the programs code. So for example a inner function has access to the variables of 
+the outer function.
+
+Scope is the space or environment in which a certain variable is declared. For functions this is the 
+variable environment where the variables are stored in the function's execution context.
+Scope and variable environment for the case of functions it's basically the same thing.
+
+In JS there are different types of scopes: global scope, function scope, block scope.
+
+The scope of a variable is the entire area of the code where the variable can be accessed.
+
+##### Types of scope ##### 
+Slide 100
+
+- Global scope
+    - For variables declared outside of any function or block 
+    - Variables declared in global scopes are accessible everywhere in all functions and blocks.
+
+It's for top level code.  
+
+- Function scope 
+    - Each and every function creates a scope. The variables declared inside the function scope
+    are only accessible inside the function. It's the same to the function variable environment.
+    - This can also be called local scope, opposed to the global scope.
+
+In here it does not matter the type of function. Function declarations, expressions, arrow all
+create their own scope.
+
+- Block scope 
+    - Variables are accessible only inside the block 
+    - However this only applies to let and const variables. let and const are block scoped.
+    If the variable was declared using var, them the variable, would be accessible outside 
+    of the block and it would be scoped to the current function or the global scope. var is 
+    function scoped.
+    - Functions are also block scoped
+
+Blocks mean everything between curly braces, for example a if statement, a for loop. In ES6 all 
+function are block scoped in strict mode.
+
+Variables are not copied from one scope chain to another, scopes simply look the scope 
+chain, until they find the variable they need, this is called variable look up.
+
+A inner scope has access to the variable from it's outer scope but the inverse is not 
+true.
+
+In the slide the 'var millenial = true' is function scoped so it can be accessed by the first 
+and second function. 
+
+The block scopes created with if also gets access to the scope chain.
+
+The if block and the second function can't access the variables from each other because of 
+lexical scoping. None of this two scopes are written inside one another they are both 
+child scopes of the first function, they are sibling scopes. You can also say that the scope 
+chain only works upwards not sideways.
+
+##### Scope Chain vs Call stack #####
+
+The scope chain has nothing to do with order in which the function are called, in other words 
+the scope chain has nothing to do with the order of the execution context in the call stack.
+The scope chain does get access to the variable environments but that's it.
+
+You can say that the scope chain in a certain scope is equal to adding together all the 
+variable environments of all the parent scopes.

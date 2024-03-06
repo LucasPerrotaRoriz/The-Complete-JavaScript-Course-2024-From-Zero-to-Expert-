@@ -1,0 +1,35 @@
+##### Hosting #####
+Slide 106
+Hoisting makes some types of variables usable in the code before they are declared. Some may define hosting as the 
+variables being magically lifted to the top of their scope, that's what looks like in the surface, but behind 
+the scenes it's different.
+
+Behind the scenes the code is scanned for variable declarations before it is executed. This happens before the creation 
+phase of the execution context. For each variable that is found in the code a new property is created in the variable 
+environment object.
+
+Hosting works differently for different variable types:
+
+- function declarations: They are hoisted and the initial value in the variable environment is set to the actual 
+function. This means that functions declarations can be used before they are declared and that's possible because they are 
+stored in the variable environment object even before the code starts executing. function declarations are block scoped in 
+strict mode.
+
+- var variables: They are hoisted and scoped to functions. The initial value unlike functions is set to undefined
+
+- let and const variables: They are not hoisted and are block scoped. They are technically hoisted but their value is 
+set to uninitialized, so no value. They are placed in a TDZ where you can't access the variables between the beginning
+of the scope and the place where the variables are declared. You will get an error if you try to access them.
+
+- function expressions and arrows: Depends if they were created with var or let/const, since they behave like variables.
+
+##### TDZ, let and const #####
+Slide 107
+
+The main reason for the TDZ, is that it makes it easy to avoid and catch errors. The second reason is to make const variables work like they 
+are supposed to. const variables can't be reassigned so they can't be set to undefined and the value defined later. It's only 
+assigned when execution reaches declaration.
+
+Hoisting exists so functions declarations can be used before they are declared. This is important to some programming techniques 
+like mutual recursion. Some think it makes the code more readable. It only works with var variables because at the time let and const 
+did not exist.

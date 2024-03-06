@@ -1,0 +1,31 @@
+Slide 74
+
+High level - There are low level languages like c, where developers must manage the resources
+manually. Javascript as a high level language does not need to manage resources manually 
+this happens automatically. 
+
+Garbage collection - It's an algorithm inside the js engine that removes automatically unused objects
+from the computer memory.
+
+Javascript is an interpreted or just-in-time-compiled language
+
+Multi-paradigm - A paradigm is a way to structure the code. Some examples are: 
+Procedural programming - which is basically a code that follows a linear way in terms 
+of it's structure with function in between.
+Object-oriented programming (OOP)
+Functional programming (FP)
+
+Prototype-based object-oriented - Almost everything in JS is a object, except for primitive values.
+Arrays are for example objects. Arrays are created from a array blueprint called prototype, the prototype 
+has all the methods, and this methods are inherited by an array when it's created. This is a oversimplification.
+
+First class functions - Functions are treated exactly like variables. Functions can be passed to functions and 
+also returned from functions. This allows for functional programming.
+
+Dynamic - Types are defined dynamically.
+
+Single-threaded - Concurrency model is how JS handles multiple tasks happening at the same time.
+JS runs in a single thread meaning it can only do one thing at a time.
+
+Non-blocking event loop - The event loop takes long running task, runs them in the background, and 
+once they are finished puts them in the main thread.

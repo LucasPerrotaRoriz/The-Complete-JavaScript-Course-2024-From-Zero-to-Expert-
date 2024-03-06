@@ -1,0 +1,58 @@
+##### What is a execution context ##### 
+Slide 94
+Imagine the code has just finished compiling, then the code is ready to be executed.
+
+In the first step a global execution context is created for the top level code. Top level code can be defined as 
+code that is not inside any function. So in the beginning only the code that is outside of functions will be executed.
+
+In the slide 'const name = 'Jonas';' is a example of top level code, so it will be executed in the global execution context.
+Then there is the 'first' and 'second' functions, which it's code will only be executed when they are called.
+
+A execution context is a place where a piece of JS is executed. It's like a box that contains all the information
+necessary to execute the code, like local variables or arguments passed to a function. JS code always runs inside a 
+execution context
+
+No matter how big a JS project is, there is only one global execution context. It's always there as a default context and 
+it's where top level code is to be executed
+
+In the second step the top level code is executed.
+
+In the third step is when functions are executed and will wait for callback functions. For each and every function a 
+execution context will be created with all the information necessary to run the function. The same goes for methods.
+All these execution context together make up the call stack.
+
+When all functions are done executing the engine will wait for the callback functions, for example a callback attached 
+to a click event. The event loop is the one providing these callback functions.
+
+##### Execution context in detail #####
+
+What's inside a execution context?
+- A variable environment
+    - let, const and var declarations
+    - functions
+    - arguments object
+- Scope chain
+- 'THIS' keyword
+
+The arguments object contains all the arguments passed in to the function. Since a function get's a execution context
+as soon as it's called, all the variables declared inside a function will end up in the variable environment. A function 
+can also access variables outside of it because of the scope chain.
+
+The scope chain consists of variables with references to variables outside of the current function. To keep track of the 
+scope chain it's stored in each execution context. Each context also gets access to the 'this' keyword.
+
+These 3 contents of the execution context are generated in the creation phase which happens right before execution.
+
+Execution contexts created with arrow function have no arguments object and the 'this' keyword. Instead they can use 
+the arguments object and the this keyword from the closest regular function parent.
+
+Slide 95
+In the slide the values are not knowed during the creation phase, only in the execution phase.
+
+Slide 96
+The call stack together with the memory heap makes up the JS engine itself.
+
+The call stack is a place where execution contexts get stacked on top of each other in order to keep track the  
+order of execution. The execution context that is on top is the one currently executing.
+
+

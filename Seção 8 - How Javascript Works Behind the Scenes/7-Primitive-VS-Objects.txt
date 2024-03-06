@@ -1,0 +1,42 @@
+##### Primitives, Objects in JS #####
+
+Primitives are Number, String, Boolean, Undefined, Null, Symbol, BigInt
+
+Objects are object literals, arrays, functions and many more.
+
+Primitive values can be called primitive types and object values are called reference types because they are stored
+differently in the memory.
+
+The JS engine has two components the call stack where functions are executed and the heap where the object are
+stored.
+
+All the objects, reference types will be stored in the memory heap. Primitive types are stored in the call stack,
+they are stored in the execution contexts in which they are declared.
+
+##### Primitive VS. Reference Values
+Slide 115
+
+- Primitive values
+When you create a variable like in the slide 'let age = 30', JS will create a unique identifier with the variable
+name, then a piece of memory will be allocated with a address and the value will be stored in the address. The 
+identifier points to the address and not to the value. So when you say that age is equal to 30, but in fact age is 
+equal to the address 0001 that holds the value 30.
+
+'let oldAge = age' will make 'oldAge' point to the same memory address of age.
+
+When 'age' is changed to 31 the value in the address 0001 will not become 31. The value at a memory address is 
+immutable. What happens then, is that a new address in memory will be created having the new value.
+
+- Reference values
+
+When a new object is created in this case the 'me' object, it will be stored in the heap. There will be a memory 
+address with the value itself. In the case of reference types they work differently, they will not point to the memory 
+address containing the value in the heap, but instead it will point to a piece of memory created in the stack. 0003 will
+have a reference to the piece of memory in the heap and will point to it. It works like this because objects might be too 
+large to be stored in the stack.
+
+When the object 'friend = me', it will point to the same memory address of 'me'. In this case the 'friend' object is the exact
+same as the 'me' object
+
+'friend.age = 27' will alter the age of the object stored in the heap. Even through 'friend' is declared as a 'const' it can still
+be altered. This is possible because the value being changed is the object and not the value stored in the memory address.

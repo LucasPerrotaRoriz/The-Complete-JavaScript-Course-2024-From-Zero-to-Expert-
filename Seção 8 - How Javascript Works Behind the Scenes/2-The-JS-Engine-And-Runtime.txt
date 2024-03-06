@@ -1,0 +1,79 @@
+Slide 87
+
+A JS engine is a program that executes JS code. Every browser has a JS engine, the most popular 
+being google's V8.
+
+Any JS engine always contains a call stack and a heap.
+The call stack is where the code is executed using execution contexts. The heap is a 
+unstructured memory pool that stores the objects needed in the application.
+
+##### Compilation vs Interpretation ##### 
+Slide 88
+- Compilation is when the entire code is converted into machine code at once, and written in a portable 
+file that can be executed by a computer. This follows a couple of steps:
+
+First the machine code is built and then is executed in the CPU, the execution can happen way after 
+the compilation. So for example any app that i am currently using has been compiled before, therefore
+you're executing it after the compilation.
+
+- Interpretation is when there is a interpreter that runs through the code and executes it line by line.
+Different from compilation there are not the two steps, the code is read and executed at the same time.
+The source code still needs to be converted into machine code, but it happens before it get's executed
+not ahead of time.
+
+JS used to be this way. Interpreted languages have the disadvantage of being slower compared to compiled 
+languages. This is not true anymore, JS now uses a mix of compilation and interpretation.
+
+- Just-in-time(JIT) compilation: The entire code is converted at once and then executed immediately.
+The two steps from compilation still exists, but there is no longer a portable file to execute. The 
+execution happens immediately after the compilation.
+
+##### Example of how JIT works: #####
+Slide 89
+
+Parsing
+The first step is the code being parsed, which means the code is read. The code is parsed into a data structure 
+called Abstract Syntax Tree or AST. This works by splitting the lines of code that are meaningful to the language 
+for example the const or the function keywords. This pieces are saved into the AST in a structured way.
+This step will check for any syntax errors, the resulting tree will be used to generate the machine code
+The slide shows a example how a line of code is represented in AST. This tree is not related to the DOM
+in any way.
+
+Compilation
+It takes the AST that was generated and compiles it to machine code. The machine code get's executed
+right away because modern JS uses JIT.
+
+Execution 
+The execution will happen in the call stack
+
+The process does not end here since JS has some optimization strategies. What is first created is a unoptimized
+version, so it can execute as soon as possible. In the background the code is being optimized and recompiled 
+during the already running program execution. This can happen multiples times and after each loop the unoptimized
+code is deleted for the new code.
+
+These steps parsing, compilation, execution and optimization happens in a special thread in the engine that can't 
+be accessed by code, so it's completely separate from the main thread that is running in the call stack executing 
+the code.
+
+Different engines implement this process differently, but this is a general idea of how it works.
+
+##### Javascript Runtime #####
+Slide 90
+A JS Runtime can be imagined as a big container that has all the things needed to use JS in the browser.
+At a JS Runtime there is always a JS engine. Without a engine there is no Runtime, but the engine alone is 
+not enough, access to the web APIS is required.
+
+Web APIS are functionalities provided by the engine, but they are not a part of the JS engine, JS just has 
+access to this APIS through the global window object. The Web APIS are part of the Runtime, since the Runtime 
+is a container with everything JS needs
+
+The JS Runtime also has a callback queue. The callback queue has all the functions that are ready to be 
+executed. For example a event handler function attached to a DOM element like a button, the event handler is 
+a callback function. If the event is triggered by a click for example, the callback function will be called 
+and put in the callback queue. When the call stack is empty, the callback function is passed to the stack 
+to be executed. This happens because of the event loop.
+
+The event loop takes functions from the callback queue and put's them in the call stack to be executed.
+I's because of the event loop that the JS non blocking concurrency model is implemented.
+
+Different JS Runtimes exist like the one in node.js.

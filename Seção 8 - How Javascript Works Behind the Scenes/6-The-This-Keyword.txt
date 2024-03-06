@@ -1,0 +1,26 @@
+##### How the 'this' keyword works 
+Slide 110
+this keyword/variable: It's a special variable that is created for every execution context, therefore any function.
+The 'this' keyword will always take the value of the owner of the function in which the 'this' keyword is used, it can
+also be said that it points to the owner of the function.
+
+The value of the 'this' keyword is not static. It depends on how the function is called and it's value is assigned when
+the function is called.
+
+There are 4 four ways to a function to be called:
+
+- Method -> this = It points to the object calling the method.
+
+- Simple function call -> this = undefined. But this is only valid for strict mode, if not it will point to the global
+window object.
+
+- Arrow functions -> this = It will be the 'this' keyword of the surrounding function, of the parent 
+function. In technical terms this is called the lexical 'this' keyword because it get's picked up from
+the outer lexical scope. 
+
+- Event listener -> this = The DOM element the handler is attached.
+
+'this' will never point to the function currently being used and it will not also point to the variable environment
+of the function.
+
+You can also call functions with new,call,apply and bind.
