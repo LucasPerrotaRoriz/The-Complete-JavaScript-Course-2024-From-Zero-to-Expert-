@@ -1,0 +1,400 @@
+Javascript Seção 2
+
+*************************************
+- Recomendações / Coisas Importantes
+
+Você pode escrever javascript dentro da tag script(inline script) ou linkar para um arquivo(external script).
+É recomendado colocar Javascript no final da tag body, assim dá tempo do HTML carregar antes
+do Javascript carregar, previnindo erros e acelerando o tempo de resposta.
+Não é necessário colocar ; no final do código mas é considerado boa prática colocar.
+Não faz diferença usar ' ou ", ambos representam uma string.
+O console do browser pode acessar todas as variáveis que estão rodando no tab do browser atual.
+Para comentar código use /**/ ou //
+Para pegar um valor de qualquer página web use a função prompt. Ela cria uma janela
+com um prompt para digitar.
+
+*************************************
+- Comandos separados
+
+alert cria uma tela de diálogo. Exemplo: alert('Javascript is FUN!')
+
+console.log exibe uma mensagem no console do navegador. Múltiplos valores pode ser usados e 
+também pode-se fazer operações neles.
+Exemplo: console.log("Jonas"), console.log(23)
+console.log(ageJonas, ageSarah);
+console.log(ageJonas * 2, ageJonas / 2);
+
+*************************************
+- Declaração de Variáveis 
+
+let é usado para declarar uma variável local no escopo do bloco atual, opcionalmente 
+iniciando-a com um valor.
+Exemplo: let js = 'amazing' | let firstName = "Jonas"
+
+const é usado para declarar uma variável que não vai mudar, ou seja é constante.
+const também não pode ser usada para declarar uma variável vazia.
+Exemplo: const birthYear = 1991;
+
+Como melhor prática para escrever clean code é recomendado usar const por padrão e let
+somente se tiver certeza que a variável precisa mudar. É boa prática ter o mínimo de
+mudança de variáveis possível, já que mudando o valor de variáveis constantemente pode
+gerar bugs.
+
+Outro jeito de declarar variáveis é com var, mas deve ser completamente evitado. 
+Quando criado no browser var é adicionado no contexto global e pode ser acessado com 
+window.nomedavariável. Isso não acontece com const e let
+Exemplo: var job = 'programmer';
+job = 'teacher';
+
+Pode-se criar variáveis sem usar let, const ou var. Mas não é uma boa idéia pois não cria a
+variável no scope atual, Javascript cria uma propriedade no objeto global. É recomendado sempre
+declarar variáveis com const ou let.
+Exemplo: lastName = 'Schmedtmann';
+console.log(lastName);
+
+Múltiplas variáveis podem ser declaradas na mesma linha.
+Exemplo: let x, y;
+
+Variáveis declaradas dentro de um bloco pertencem somente a esse bloco.
+Exemplo:
+if() { 
+   let = century; // Essa variável só é accesível dentro do bloco if.
+}
+
+Variáveis criadas com let sem valor definido são undefined.
+
+*************************************
+- Nome de variáveis
+
+Para nomear variáveis use a notação camelo como em firstName ou usar _ com em first_name. O primeiro
+método é o mais recomendado. Nomes de variáveis não podem começar com número. Nomes de variáveis 
+devem somente conter números, letras, _ ou $.
+Exemplo: 3years - Inválido
+	jonas&matilda - Inválido
+	new - Inválido. Nomes reservados não podem ser usados.
+
+Variável chamada name pode, mas pode gerar alguns problemas pois é meio que uma palavra reservada.
+É recomendado não utilizar name.
+
+Por convenção não se deve iniciar um nome de variável com letra maiúscula.
+Exemplo: let Person = 'jonas'
+
+Variáveis não devem ser definidas com todas as letras maiúsculas pois contantes são defindas assim
+
+Os nome de variáveis devem descrever bem o tipo de valor que elas guardam.
+Exemplo: 
+Fazer isso:
+let myFirstJob = 'Programmer';
+let myCurrentJob = 'Teacher';
+
+Ao invés disso:
+let job1 = 'programmer';
+let job2 = 'teacher';
+
+Em javascript todo valor é um objeto ou valor primitivo.
+Exemplo objeto:      Exemplo valor primitivo
+let me = {	     let firstName = 'Jonas';
+  name = 'Jonas'     let age = 30;	
+}
+
+*************************************
+- Tipos de variáveis
+
+Existem 7 tipos de dados em Javascript
+
+1. Number - Números de ponto flutuante. Usado para decimais e inteiros
+Exemplo: let age = 23 é o mesmo que 23.0.
+
+2. String - Sequência de caracteres. Usado para texto.
+Exemplo: let firstName = 'Jonas';
+
+3. Boolean - Tipo lógico que pode ser True ou False. Usado para tomar decisões.
+Exemplo: let fullAge = true;
+
+4. Undefined - Variável ainda não definida.
+Exemplo: let children.
+
+5. Null - Valor vazio.
+
+6. Symbol(ES2015) - Valor único que não poder ser mudado.
+
+7. BigInt(ES2020) - Inteiros maiores que number não suporta.
+
+Javascript possui dynamic typing o que significa que não é nessário definir o tipo
+da variável.O tipo delas é definido automaticamente.
+
+typeof é um operador como o de adição e subtração que pode ser usado para mostrar o 
+tipo da variável.
+
+Quando declarar pela primeira vez uma variável é necessário usar let, depois não é 
+necessário.
+Exemplo: 
+let javascriptIsFun = true;
+javascript = 'YES!'; O  tipo da variável também pode ser modificado.
+
+O código console.log(typeof null); mostra object, isso é um erro deveria retornar null.
+
+*************************************
+- Operadores Básicos
+
++, -, *, /, **(exponenciação), =, +=,-=,*=,/=,++,--,>,<,>=,<=
+
+Operador + usado com strings concaténa elas.
+Exemplo:
+const firstName = 'Jonas';
+const lastName = 'Schmedtmann'; 
+console.log(firstName + lastName); Exibi JonasSchmedtmann
+
+Para criar um espaço: console.log(firstName + ' ' + lastName);
+
+Olhar precedência de operadores.
+
+*************************************
+- Strings
+
+Jeito não muito eficiente de escrever Strings.
+Exemplo:
+const firstName = 'Jonas';
+const job = 'teacher';
+const birthYear = 1991;
+const year = 2037;
+
+const jonas = "I'm " + firstName + ', a ' +
+(year - birthYear) + ' years old ' + job + '!';
+
+É melhor usar template strings/literal pois são mais fáceis de escrever a string.
+Para escrever template strings use ``. Use ${} para escrever as variáveis.
+Exemplo:
+const jonasNew = `I'm ${firstName} a ${year -
+    birthYear} year old ${job}!`;
+
+`` pode ser usado para qualquer string normal.
+Exemplo:
+console.log(`Just a regular string...`);
+
+template strings pode criar string multi linhas.
+Exemplo:
+Com aspas simples 
+console.log('String with \n\
+multiple \n\
+lines');
+
+Com template strings
+console.log(`String with
+multiple
+lines`);
+
+
+*************************************
+- Estrutura de decisão if else
+
+If else é uma estrutura de controle.
+
+If cria uma condição que se verdadeira executa o código. Se tiver apenas uma linha o código a 
+ser executado não precisa usar {}, se tiver mais de uma tem que usar {}.
+Exemplo: if(js === 'amazing')
+
+else cria uma condição aonde se if for falso else executa.
+Exemplo: 
+if(age >= 18) {
+   console.log('Sarah can start driving license');
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+else if pode ser usado para continuar testando condições.
+Exemplo: 
+if() {
+
+} else if() {
+
+} else {
+
+}
+
+*************************************
+- Conversão de tipos e Coerção
+
+Conversão é quando o tipo da variável e mudado manualmente para outro tipo.
+Coerção é quando o Javascript automaticamente converte tipos por trás dos panos, ou seja,
+implicitamente.
+
+Para converter um tipo, por exemplo uma string para um número use função Number. Porém o 
+valor original não é convertido, Number ou qualquer outra função de conversão só devolve 
+o valor convertido.
+Exemplo:
+const inputYear = '1991'; 
+console.log(Number(inputYear)); // inputYear continua sendo uma String.
+
+Se Number não for capaz de converter para um número ele retorna NaN(Not an Number).
+NaN siginifica um número inválido.
+Exemplo: 
+console.log(Number('Jonas'));
+
+String converte para uma string.
+
+Javascript só consegue converter para três tipos: Number, String e Boolean. Não é possível converter
+para undefined ou null.
+
+Coerção ocorre quando um operador está lidando com dois valores que tem tipos diferentes, por exemplo
+o operador +. O Javascript irá converter um dos valores para o tipo do outro.
+Exemplo:
+console.log('I am ' + 23 + ' years old'); // 23 é convertido para string. O operador + converteu para string.
+
+Nem todos os operador fazem a conversão para string.
+Exemplo:
+console.log('23' - '10' - 3); // O operador - converteu para números. O mesmo acontece para * e /.
+Resultado = 10
+
+console.log('23' + '10' + 3); // O operador + converteu para string.
+Resultado = 23103
+
+Alguns desenvolvedores não gostam de coerção e acham que é má prática depender de
+coerção, pois muitos bugs podem ser introduzidos por causa da coerção. Porém isso só
+acontece quando não se sabe o que se está fazendo. Coerção é um ótimo mecanismo que 
+permite que menos código seja escrito e de modo mais legível.
+
+*************************************
+- Conversão e Coerção com Booleans
+
+Falsy - Valores que não são falsos, mas vão ser falsos quando tentar converté-los
+em Boolean. Em Javascript existe 5 falsy values 0, '', undefined, null, NaN. False
+já é falso é não precisa ser convertido. Esses 5 valores serão convertidos para falso
+quando tentar converté-los para Boolean, eles não são falsos inicialmente mais vão ser
+quando forem convertidos.
+
+Truthy - Todo o resto será convertido para true. Por exemplo qualquer número que não é 
+0 ou qualquer string que não seja uma string vazia será convertido para true se tentar
+converté-los para Boolean.
+
+Boolean não é tão utilizado, já que a conversão e sempre implícita e não explícita, ou 
+seja é feita a coerção.
+
+O Javascript faz coerção com boolean em duas situações:
+- Usando operadores lógicos
+- Um contexto lógico, por exemplo uma condição if else
+Exemplo:
+const money = 0; 
+if(money) { // *
+    console.log("Dont spend it all ;)";
+} else {
+    console.log("You should get a job!");
+}
+
+* Javascript vai tentar fazer coerção em qualquer valor para boolean. Se não é boolean 
+Javascript vai tentar converter para boolean e isso acontence para truthy e falsy.
+No exemplo 0 é um valor falsy, logo é convertido para falso. Se money fosse = 100,
+seria um valo truthy.
+
+*************************************
+- Operadores de igualdade == e ===
+
+=== retorna verdadeiro ou falso. Verdadeiro será o resultado se ambos os lados forem
+iguais. === é chamado operador de igualdade strict, pois não faz coerção, retorna
+verdadeiro se os valores forem exatamente iguais de valor e tipo.
+Exemplo: 18 === 18 V
+         '18' === 18 F
+
+== é chamado de operador de igualdade loose, que faz coerção
+Exemplo: '18' == 18 V // a string 18 é convertida para número
+
+Como regra geral para clean code, evite == pois pode gerar bugs. É melhor converter 
+o valor manualmente antes da comparação do que depender de ==.
+
+!== Operador de diferente(strict) Mais recomendado.
+!= (loose)
+
+*************************************
+- Operadores Lógicos &&, ||, !
+
+Funciona da mesma forma que em outras linguagens de programação
+
+*************************************
+- Switch
+switch(variavel) {
+   case: valor // Não precisa de chaves 
+	alguma coisa
+	break;
+   case: valor
+   case: valor
+	alguma coisa
+	break;
+   default:
+	alguma coisa	
+}
+
+
+*************************************
+- Declarações e Expressões
+
+Uma expressão é um código pequeno que produz um valor Exemplo: 3 + 4, 1991, true && false && !false
+Uma declaração é um código maior que não produz valor 
+Exemplo: 
+if (23 > 10) {
+   const str = '23 is bigger';
+}
+
+*************************************
+- Operador Ternário(Condicional)
+
+expressão ? se for verdadeiro : se for falso
+Exemplo: 
+age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');
+
+Um operador é uma expressão, isso significa que se tiver um valor é possível atribuir esse valor
+a uma variável.
+Exemplo: const drink = age >= '18' ? 'wine' : 'water';
+
+Pode se usar junto de template literal
+console.log(`I like to drink ${age >= '18' ? 'wine' : 'water'}`);
+
+RESUMO
+
+Seção 2
+
+let, const, var
+console.log
+alert
+prompt
+Strings ', ", ``
+Template Literals
+inline script, external script
+/**/, //
+
+Nomes de variáveis podem ter letras, dígitos, _ e $. Devem começar com letra, mas podem 
+começar com $ ou _. São case sensitive. Nomes reservados não podem ser usados.
+
+Tipos de dados - number, string, object, boolean, array, undefined, null, symbol, bigint
+dinamic typing
+
+Operadores +, -, *, /, **(exponenciação), =, +=,-=,*=,/=,++,--,>,<,>=,<=
+
+if else, if else if
+
+Conversão - Numbe,r String, Boolean e Coerção + - * /
+
+Falsy values - 0, '', undefined, null, NaN
+Truthy Values - qualquer coisa diferente de falsy
+
+Igualdade ==,===, !=, !==
+
+Operadores Lógicos &&, ||, !
+
+Switch case
+
+Expressão código pequeno que produz valor
+ 3 + 4, 1991, true && false && !false
+Declaração valor maior que não porduz valor
+if (23 > 10) {
+   const str = '23 is bigger';
+}
+
+Operador Ternário - ? true : false. Pode usar para atribuir valor e em template literals
+
+
+
+
+
+
+
