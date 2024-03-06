@@ -1,0 +1,318 @@
+Javascript Seção 3
+
+************************************
+- Ativando o modo strict
+
+Permite escrever código Javascript de forma mais segura.
+Para ativar o modo strict digite isso no início do script: 'use strict';
+Dever ser a primeira linha no script, caso contrario não funcionará. Comentários
+não contam.
+
+O modo strict pode ser ativado para uma função específica ou para um bloco específico.
+
+O modo strict proibi algumas coisas e mostra erros visíveis.
+
+************************************
+- Funções
+
+Uma função é um pedaço de código que pode ser usado muitas vezes, com isso 
+evitando a repetição de código.
+
+Para criar uma função:
+function nomedafunção() {}
+function nomedafunção(parâmetros) {}
+
+Para chamar/rodar/invocar a função:
+nomedafunção();
+nomedafunção(argumento)
+
+Keyword return retorna um valor da função que pode ser armazenado em uma variável, 
+ou pode ser exibido com console.log. Nem todas as funções precisam retornar valores.
+
+Funções são importantes para escrever código sustentável, já que é criado um bloco
+de código que é reutilizado evitando repetições que evitam erros.
+
+Essas funções são chamadas functions declarations. Porque só é usado function para declarar
+uma função, parecido com uma variável.
+
+************************************
+- Function Declarations vs Expressions
+
+Uma função pode ser declarada também dessa forma.
+
+const variável = function(parâmetros) {
+	função faz algo
+	return;
+}
+
+Exemplo:
+const calcAge2 = function(birthYear) {
+   return 2037 - birthYear;
+}
+
+Nesse caso a variável é uma função. A função sem nome é chamada de função anônima.
+A função é chamada da mesma forma.
+
+// Function declaration
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+// Function expression
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+Function declaration e expression funcionam da mesma forma.
+
+Funções são valores.
+
+A diferença entre function declarations e expressions e que declarations podem ser chamadas
+antes de sua definição. Por exemplo:
+
+nomedafunção();
+
+function nomedafunção() {
+
+}
+
+O mesmo não ocorre para function expressions.
+
+************************************
+- Arrow Functions
+
+Função arrow é um jeito de escrever a função com menos código, e funciona da mesma forma
+que as outras funções.
+Exemplo:
+// Function expression
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+// Arrow 
+const calcAge3 = birthYear => 2037 - birthYear; // O valor é retornado sem precisar
+escrever return se tiver apenas uma linha. Exemplo com mais de uma linha:
+const yearsUntilRetirement = birthYear => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+}
+
+Se tiver mais de um parâmetro use (). Exemplo:
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement}`
+}
+
+Funções arrow não tem a keyword this.
+
+************************************
+- Funções chamando funções
+
+Funciona da mesma forma que em outras linguagens.
+
+************************************
+- Review de funções
+
+Function declaration - Podem ser usados antes de sua declaração.
+function calcAge(birthYear) {
+   return 2037 - birthYear;
+}
+
+Function expression - Uma função guardada em um variável
+const calcAge = function(birthYear) {
+  return 2037 - birthYear;
+}
+
+Arrow Function - Boa para funções de uma linha. Não tem keyword this.
+const calcAge = birthYear => 2037 - birthYear;
+
+Três funções diferentes, mas funcionam da mesma forma.
+
+************************************
+- Arrays
+
+Arrays são estrutura de dados. Arrays podem armazenar diferentes valores de um tipo.
+Arrays começam com índice 0.
+Exemplo:
+const variável = [valor1, valor2 ... valorN];
+const variável = new Array(valor1, valor2 ... valorN)
+
+Para mostrar um elemento do array ou mudar um elemento é só acessar o índice.
+Exemplo:
+nomedoarray[índice] = 10
+console.log(nomedoarray)
+console.log(nomedoarray[índice])
+
+.length mostra o tamanho do array: nomedoarray.length
+
+Mesmo criando variáveis que vão ser arrays com const, elas ainda podem ser modificadas. Somente
+tipos primitivos são imutáveis e array não é um tipo primitivo. O que não pode ser feito é 
+substituir o array inteiro.
+Exemplo:
+const friends = ['Michael', 'Steven', 'Peter'];
+friends = ['Bob', 'Ellis'] // Errado 
+
+Arrays esperam em cada posição uma expressão logo o valor de 2037 - 1991 pode ser usado.
+Exemplo:
+const jonas = ['Jonas', 'Schedtmann', 2037 - 1991];
+
+Até chamadas a métodos:
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
+
+Arrays podem conter arrays.
+
+- Métodos de arrays
+push - adiciona elementos ao final do array. Retorna o tamanho do array novo.
+unshift - adiciona elementos ao ínicio do array. Retorna o tamanho do array novo.
+pop - remove o último elemento. Retorna o elemento removido.
+shift - remove o primeiro elemento. Retorna o elemento removido.
+indexOf - retorna o índice do elemento. Se não estiver presente retorna -1.
+includes - retorna true se o elemento estiver no array, false se não estiver. A comparação é
+strict logo se fizer por exemplo push(23) e include('23') retornará false, include(23)
+retornará true.
+
+************************************
+- Objetos
+
+Com objetos são definidos pares chave/valor. Chaves são convertidas para string.
+
+Exemplo:
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+As chaves em um objeto como firstName são chamadas propriedades.
+
+Esse tipo de definição de objetos com {} é chamado object literal Syntax.
+
+Em objetos a ordem dos elementos não importa quando quer retorná-los.
+
+Arrays são melhores utilizados com dados que devem ser ordenados e objetos para
+dados sem estrutura que você quer retornar baseado no nome.
+
+Para acessar os valores do objeto use o nome.propriedade ou nome['propriedade']
+Exemplo: jonas.lastName
+	 jonas['lastName']
+
+A diferença entre os dois é que com [] você pode colocar qualquer expressão que desejar.
+Exemplo: 
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+Na notação com . o nome da propriedade real deve ser utilizado logo 
+console.log(jonas.'last' + nameKey) não é possível.
+
+Quando é necessário computar primerio o nome da propriedade como em console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]); é usado a notação [], nos outros casos use a notação com ., pois é
+mais fácil e mais limpa.
+
+undefined é retornado quando tentar acessar uma propriedade em um objeto que não existe.
+
+Um prompt pode ser usado para tentar pegar o valor de uma propriedade. 
+Exemplo:
+const interestedIn = prompt('What do you want to know about jonas? ' + 
+'Choose between firstName, lastName, age, job and friends');
+console.log(jonas[interestedIn]); 
+
+Para adicionar outras porpriedades ao objeto Exemplo:
+jonas.location = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+
+Qualquer função que esteja relacionada a um objeto é um método. Function expressions podem ser usadas dentro de um objeto.
+Exemplo:
+const jonas = {
+    calcAge: function(birthYear) {
+        return 2037 - birthYear;  
+    }
+};
+
+Para chamar o método e conseguir um valor Exemplo:
+console.log(jonas.calcAge(1991));
+ou
+console.log(jonas['calcAge'](1991));
+
+Use this para se referenciar ao valor de uma propriedade dentro de um objeto.
+Exemplo:
+calcAge: function() {
+        return 2037 - this.birthYear;  
+    }
+
+Um método dentro de um objeto também pode criar uma propriedade.
+Exemplo:
+calcAge: function() {
+        this.age = 2037 - this.birthYear;
+        return;  
+    }
+
+
+************************************
+- For Loop
+
+Funciona da mesma forma que as outras linguagens de programação
+
+Usar let ao invés de const para a variável do loop, já que ela muda.
+
+Para criar um array vazio const nomedoarray = []
+
+continue e break funcionam da mesma forma.
+
+
+Seção 3
+
+'use strict' - strict mode
+
+Function Declarations 
+function name() {return}, function name(param)
+To run - name(), name(param)
+
+Function Expressions
+const name = function() {return}
+const var = name()
+
+Arrow Functions
+const var = param => something;
+const var = param => {return}
+const var = (param1, param2) => {}
+
+Arrays
+const var = [valor1... valorN]
+const var = new Array(valor1...valorN)
+const var = []
+
+push, unshift, shift, pop, indexOf, length, includes,concat, every, fill, find,
+flat, flatMap, forEach, entries, keys, values,reverse, reduce, slice, some, 
+sort, splice,ToString
+
+Objetos
+const obj = {}
+
+const obj = { 
+   propriedade: valor,
+   method: function(){},
+}
+
+obj.propriedade ou obj['propriedade']
+Add obj.propridade = valor
+
+For Loop, While Loop
+
+continue e break
+
+
+
+
+
+
+
+
+
+
+
+
