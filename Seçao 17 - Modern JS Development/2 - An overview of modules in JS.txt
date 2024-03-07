@@ -1,0 +1,121 @@
+
+----- Modules
+
+A modules can be describe as a piece of code that contains implementation details of a certain feature, encapsulating it. This may
+sound like a function or class but the difference is that modules are standalone files.
+
+A module can have imports and exports. What's exported is called a public API. Simple things can be exported like a variable or more 
+complex like a object.
+
+When you import from other modules they are called Dependencies. 
+
+All this things will be true for other programming languages as well.
+
+You can code without modules but in real world scenarios they are a good idea.
+
+----- Why modules?
+
+- They make it ease to compose software
+By having modules as small building blocks that are put together which them form a more complex application.
+
+
+-- Isolate components
+As a example imagine a camera. It's composed of different parts that do one thing and their implementation can be made in isolation hiding
+their details. If you had one person working in one part they would not have knowledge of how another part is implemented or how the 
+complete camera functions.
+
+
+-- Abstract code
+You can implement low level code in module and import them into other modules. So for example a part of the camera can import another modules without
+the need of knowing what's inside.
+
+
+-- Organized code
+Since the code is being split into modules and each has a separate function it leads to a more organized codebase.
+
+
+-- Reuse code
+Modules allows you to reuse them in other areas or different projects. So for example you could use a lens of the camera into different 
+cameras.
+
+Together all this parts will form a camera which is complex.
+
+
+----- Native JS(ES6) modules 
+
+They are stored in files. There can only be one module per file.
+
+-- ES6 Module vs Script 
+
+ES6 Module
+- Top-level variables 
+Are scoped to be module. A value is private to the module and can only be accessed if it's exported.
+
+- Execution mode 
+Strict by default
+
+- Top-level 'this'
+'this' is undefined
+
+- Imports and exports 
+You can import and export values. Imports all always hoisted
+
+- HTML linking 
+You have to define a type module in the script file.
+
+- File downloading
+This will happen asynchronously.
+
+
+
+Script
+- Top-level variables 
+All top level variables are global. These can cause troubles because variables names may conflict.
+
+- Execution mode 
+Sloppy by default
+
+- Top-level 'this'
+'this' is point to the window object.
+
+- Imports and exports 
+There is no way you can do this.
+
+- HTML linking 
+Just link the src in the script tag.
+
+- File downloading
+This will happen synchronously.
+
+----- How ES6 modules are imported
+
+The code example is :
+
+import {rand} from '.math.js';
+import {showDice} from '.dom.js';
+const dice = rand(1,6,2);
+showDice(dice);
+index.js
+
+-- Parsing
+
+Before being executed the code goes through parsing first which is just reading without executing. It's here where imports are hoisted before execution.
+
+The file will import the modules in a synchronous way. After all the imports then index.js will be executed. This becomes possible because of top-level('static')
+imports because they make imports know before execution.
+
+The imports are loaded in this way because it make bundling and eliminating unused code better.
+
+-- Downloading
+
+After parsing, modules will be downloaded in a async way. After arriving the modules are parsed and there will be the linking of imports of math.js and dom.js
+exports.
+
+So as a example 'math.js' exports 'rand'. So the import in the is connected to the 'rand' in 'math.js' creating a live connection not a copy. If by any 
+reason the exported values changes the import will change too.
+
+Others modules systems may work differently from JS.
+
+-- Execution 
+
+After downloading, the imports will be executed and then 'index.js'.

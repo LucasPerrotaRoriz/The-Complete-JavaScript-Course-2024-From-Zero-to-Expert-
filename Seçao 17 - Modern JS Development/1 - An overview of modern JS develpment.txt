@@ -1,0 +1,22 @@
+
+In the older days programmers used to put all the code in one file or multiple;
+
+Now the code is divided in modules, making the code organized, maintainable, easy to debug. 3rd party modules/packages can also
+be included through NPM.
+
+The projects needs to go through a build process where a JS bundle will be built. This file will be deployed to the web server to production.
+Production only means that the app will be used by real users in the real world.
+
+The first step in the build process is:
+1) Bundling
+All modules will be bundled together and they might remove unused code and compress it. This has great important because:
+- Older browsers don't support modules, so code won't be executed  
+- Better for performance
+
+2) Transpilling / Polyfilling
+
+JS features will be converted to old ES5 syntax so older browsers can read the code. A tool that does that is Babel.
+
+You will need JS bundlers to do that examples are Webpack and Parcel which can be download through npm.
+
+
