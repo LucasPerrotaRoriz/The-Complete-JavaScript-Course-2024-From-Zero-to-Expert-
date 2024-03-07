@@ -1,0 +1,52 @@
+
+-- Imperative vs Declarative code
+
+Imperative code means you have to explain 'HOW to do things', meaning you explain step by step what the computer must do.
+An example could be a step by step recipe of cake.
+
+Example in code:
+
+const arr = [2,3,6,8];
+const doubled = [];
+for( let i = 0; i < arr.length; i++) {
+    doubled[i] = arr[i] * 2;
+}
+
+
+While declarative you tell "WHAT to do". You explain the way the computer should achieve the result, the HOW gets abstracted. 
+Example would be describing the cake.
+
+Example in code:
+
+const arr = [2,3,6,8];
+const doubled = arr.map(n => n * 2);
+
+-- Functional programming principles
+
+It's a declarative paradigm where you combine the idea of pure functions, avoid side effects and mutate data.
+
+- Side effect 
+A modifications made to any data that's outside the function. For example mutating external variables, logging to console, writing to DOM etc...
+
+- Pure function 
+Is a function with no side effects. It does not depend on external variables, so given the same inputs it will return the same outputs.
+
+
+- Immutability 
+Functional programming is about avoiding mutating data. That's possible because of state, that is another name for data, is never modified
+instead the it's made a copy which is then mutated and returned.
+
+-- Functional programming techniques
+
+- Avoid data mutations
+- Use built in methods that don't produce side effects
+- Do data transformations with methods such as .map(), .filter(), and .reduce();
+- Try to avoid side effects on functions if possible.
+
+-- Declarative syntax
+
+- Use array and object destructuring
+- Use the spread operator
+- Use the ternary operator
+- Use template literals 
+
