@@ -111,7 +111,7 @@ The imports are loaded in this way because it make bundling and eliminating unus
 After parsing, modules will be downloaded in a async way. After arriving the modules are parsed and there will be the linking of imports of math.js and dom.js
 exports.
 
-So as a example 'math.js' exports 'rand'. So the import in the is connected to the 'rand' in 'math.js' creating a live connection not a copy. If by any 
+So as a example 'math.js' exports 'rand'. So the import in the  connected to the 'rand' in 'math.js' creating a live connection not a copy. If by any 
 reason the exported values changes the import will change too.
 
 Others modules systems may work differently from JS.

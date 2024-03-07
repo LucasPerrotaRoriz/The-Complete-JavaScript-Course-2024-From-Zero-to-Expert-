@@ -9,7 +9,7 @@
     You can make multiple export by having them inside {}.
 
     You can change the name of an import and exports using as. If you do that you can't use the old name.
-    You cam import everything from a class using * + as Name. It will return an Object with all the values.
+    You caN import everything from a class using * + as Name. It will return an Object with all the values.
 
     Default exports are from when you want to export only one thing from the module. You don't need to give a name
     on the export and when importing you can name it.
