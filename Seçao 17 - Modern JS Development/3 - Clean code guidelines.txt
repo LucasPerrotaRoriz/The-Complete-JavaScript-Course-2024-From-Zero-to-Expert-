@@ -1,0 +1,48 @@
+
+----- Readable Code -----
+
+- Write code others can understand, and you can understand in 1 year.
+- Avoid clever and overcomplicated solutions
+- Use descriptive names for variables showing what they contain and for functions 
+showing what they do.
+
+
+----- General  -----
+
+- Use DRY 
+- Don't pollute the global namespace, encapsulate things using functions, classes, 
+modules
+- Don't use var
+- Use strong type check, so ===
+
+
+----- Functions  -----
+
+- Generally, functions should do one thing
+- Don't use more than 3 parameters
+- Use default parameters when possible
+- Generally, try returning the same data type received
+- Use arrow functions when they make code more readable.
+
+----- OOP -----
+
+- Use ES6 classes
+- Encapsulate any data and don't mutate it outside the class
+- Implement method chaining
+- Do not use arrow functions as methods
+
+
+----- Avoid nested codes -----
+
+- Use guard clauses
+- Use ternary operators or logical operators instead of ifs
+- Use multiple ifs instead of if/else if
+- Avoid for loops, use array methods instead
+- Avoid callback-based asynchronous APIS
+
+----- Async code -----
+
+- Consume promises with async await for best readability
+- When possible run promises in parallel
+- Handle errors and promise rejections
+
