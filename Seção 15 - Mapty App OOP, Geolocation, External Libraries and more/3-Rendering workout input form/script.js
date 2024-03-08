@@ -13,7 +13,6 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 let map, mapEvent;
 
-
 if (navigator.geolocation) 
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -41,14 +40,12 @@ if (navigator.geolocation)
     }
   );
 
-
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   // Clear inputs fields
   inputDistance = inputDuration = inputCadence = inputElevation = '';
   
-
   // Display Marker
   console.log(mapEvent);
   const { lat, lng } = mapEvent.latlng;
@@ -71,4 +68,5 @@ form.addEventListener('submit', function (e) {
 inputType.addEventListener('change', function() {
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-})
+});
+
