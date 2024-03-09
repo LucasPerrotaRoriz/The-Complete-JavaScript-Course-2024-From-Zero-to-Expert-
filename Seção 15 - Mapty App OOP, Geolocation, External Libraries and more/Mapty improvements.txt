@@ -1,0 +1,29 @@
+----- Additional features Jonas -----
+
+- Edit, delete, delete all workouts
+- Sort workouts by a certain field like distance
+- Re-build Running and Cycling object coming from Local Storage
+- More realistic error and confirmation messages
+- Ability to position the map to show all workouts[very hard]
+    You will need to take a look at the Leaflet library. Uou could add a button that shows all the workouts 
+    at once.
+- Drawing lines and shapes instead of just points [very hard]
+    A run could be made instead o just a point but a line or a shape.
+- Geocode location from coordinates
+- Display weather data for workout time and place
+
+
+----- Additional features myself -----
+
+- A landing page advertising the system 
+- Create a login system with account creation process.
+- Make it so you can add a start and end location for the workout and 
+you can show the trail.
+- Have the workouts organized in day, week, month and user can look up old workouts.
+- Make a chart showing the data in graphs
+- Allow user to compare progress by week, month, year
+- Allow user to set reminders for workouts
+- Maybe change the overall original idea of the app but maintain these features. For example 
+create it in a way you could put user gym exercises, put in the meals and calories.
+
+
