@@ -1,6 +1,6 @@
 // $color-primary: #f59a83;
-$color-primary: blue;
-$color-grad-1: red;
+$color-primary: #f38e82;
+$color-grad-1: #fbdb89;
 $color-grad-2: #f48982;
 
 $color-grey-light-1: #f9f5f3; // Light background
@@ -37,31 +37,31 @@ html {
 }
 
 body {
+  min-height: calc(100vh - 2 * 4vw);
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: $color-grey-dark-1;
   background-image: $gradient;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 2 * 4vw);
+  color: $color-grey-dark-1;
 }
 
 .container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 10rem minmax(100rem, auto);
+  grid-template-areas: 
+    'head head'
+    'list recipe';
+
   max-width: 120rem;
   min-height: 117rem;
   margin: 4vw auto;
-  background-color: #fff;
   border-radius: 9px;
+  background-color: #fff;
+  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, .2);
   overflow: hidden;
-  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
-
-  display: grid;
-  grid-template-rows: 10rem minmax(100rem, auto);
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    'head head'
-    'list recipe';
 
   @media only screen and (max-width: $bp-large) {
     max-width: 100%;
