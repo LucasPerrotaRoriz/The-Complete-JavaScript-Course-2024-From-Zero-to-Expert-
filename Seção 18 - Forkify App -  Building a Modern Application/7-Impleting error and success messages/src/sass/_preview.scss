@@ -1,0 +1,105 @@
+@use 'index.scss' as i;
+
+.preview {
+    &__link {
+        &:link,
+        &:visited {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 1.5rem 3.25rem;
+            border-inline-end: 1px solid #fff;
+            transition: all .3s;
+        }
+
+        &:hover {
+            background-color: i.$color-grey-light-1;
+            transform: translateY(-2px);
+        }
+
+        &--active {
+            background-color: i.$color-grey-light-1;
+        }
+    }
+
+    &__fig {
+        position: relative;
+        flex: 0 0 5.8rem;
+        height: 5.8rem;
+        border-radius: 50%;
+        margin-inline-end: 2rem;
+        backface-visibility: hidden;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(
+              to right bottom,
+              i.$color-grad-1,
+              i.$color-grad-2
+            );
+            opacity: 0.4;
+        }
+
+        
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+    }
+
+    &__data {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 2rem;
+        row-gap: .1rem;
+        width: 100%;
+    }
+
+    &__title {
+        grid-column: 1 / -1;
+        max-width: 25rem;
+        font-size: 1.45rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: i.$color-primary;
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__publisher {
+        font-size: 1.15rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: i.$color-grey-dark-2;
+    }
+
+    &__user-generated {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        margin-inline-start: auto;
+        margin-inline-end: 1.75rem;
+        border-radius: 10rem;
+        background-color: darken(i.$color-grey-light-2, 2%);
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: i.$color-primary;
+        }
+    }
+}
