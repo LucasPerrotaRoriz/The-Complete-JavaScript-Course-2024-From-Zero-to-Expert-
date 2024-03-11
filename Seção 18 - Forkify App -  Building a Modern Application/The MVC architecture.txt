@@ -1,0 +1,71 @@
+----- Why worry about the architecture?
+
+-- Structure
+The architecture will give code a structure. By structuring it means to divide and organize
+the code.
+
+
+-- Maintainability
+You need to plan for the future because new improvements and fixes on the software may occur and having a 
+more organized code implementing changes becomes easier.
+
+
+-- Expandability
+The software will probably receive new features and they should be easy to develop and integrate. 
+
+
+For small projects you can create your own. 
+Some examples of architectures are MVC, MVP, Flex etc...
+
+
+----- Components of any architecture
+
+-- Business Logic
+Code that resolves the actual business problem and is related to the business. For example a bank 
+would have a business logic of storing transactions.
+
+
+-- State
+Stores any data from the app frontend. it's said State should be 'A single source of truth' meaning it must
+sync with the user. If something changes on the state the UI should make that know and the reverse.
+
+
+-- HTTP LIBRARY
+Responsible for making and receiving AJAX request. Although is optional it's a must on real world apps.
+
+
+-- Application logic 
+Code that is only concerned of the implementation the the application. For example handling UI events.
+
+
+-- Presentation Logic
+Code that is concerned about the visible part of the app. Will display the application state to keep 
+things in sync.
+
+
+----- MVC 
+
+-- Model
+Responsible for the business logic, state and HTTP library.
+
+
+-- View 
+Responsible for application logic. Create a bridge between the model and the view that should not
+know nothing of each other.
+
+
+-- Controller
+Responsible for the presentation logic interacting with the user.
+
+
+The point of MVC is to separate the application and business logic.
+
+Example: Let's say a click happens 
+
+The controller will handle the event, this might require updating the UI(View) or ask the Model for data.
+The Model dispatches tasks for the Model and the View meaning it controls the app. If an AJAX request was made
+then the data arrives and the Controller sends it to the View.
+
+It's only the Controller that imports and calls functions from the Model and View never the opposite, Model and
+View are isolated.
+
